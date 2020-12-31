@@ -12,6 +12,10 @@
   margin-bottom: 20px;
   width: 100%;
   
+  p:first-child {
+    display: none;
+  }
+  
   &.has-logo {
     border: 2px solid $tertiary;
     padding: 1em;

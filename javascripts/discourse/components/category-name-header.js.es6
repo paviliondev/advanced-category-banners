@@ -7,14 +7,13 @@ export default Component.extend({
   didInsertElement() {
     scheduleOnce('afterRender', () => {
       let $el = $(this.element);
-                  
+      $el.appendTo('section.category-heading');
+      
       if (this.category.uploaded_logo) {
-        $el.insertAfter('section.category-heading .category-logo');
-        $('section.category-heading').addClass('has-logo');
-        $('section.category-heading .category-name-header, section.category-heading p').wrapAll('<div class="category-heading-details"></div>');
-      } else {
-        $el.appendTo('section.category-heading');    
+        $('section.category-heading').addClass('has-logo');  
       }
+      
+      $('section.category-heading .category-name-header, section.category-heading p').wrapAll('<div class="category-heading-details"></div>');
     });
   }
 })
