@@ -11,16 +11,13 @@
   display: inline-block;
   margin-bottom: 20px;
   width: 100%;
+  border: 2px solid $tertiary;
+  padding: 1em;
+  box-sizing: border-box;
+  display: flex;
   
   p:first-child {
     display: none;
-  }
-  
-  &.has-logo {
-    border: 2px solid $tertiary;
-    padding: 1em;
-    box-sizing: border-box;
-    display: flex;
   }
   
   .category-logo.aspect-image {
