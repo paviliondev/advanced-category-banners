@@ -1,6 +1,6 @@
 import Component from '@ember/component';
 import { scheduleOnce } from "@ember/runloop";
-import discourseComputed from "discourse-common/utils/decorators";
+import discourseComputed, { observes, on } from "discourse-common/utils/decorators";
 import { notEmpty } from "@ember/object/computed";
 import { ajax } from "discourse/lib/ajax";
 import { userPath } from "discourse/lib/url";
@@ -11,29 +11,6 @@ export default Component.extend({
   classNames: 'advanced-category-header',
   showFeaturedUsers: notEmpty("featuredUsers"),
   showFeaturedLinks: notEmpty("featuredLinks"),
-
-  init() {
-    this._super(...arguments);
-
-    if (settings.featured_users) {
-      let featuredUsers = {}
-
-      settings.featured_users.split('|').map(u => {
-        let parts = u.split(SETTING_CONNECTOR);
-        featuredUsers[parts[0]] = parts[1];
-      });
-
-      ajax(`/user-cards?user_ids=${Object.keys(featuredUsers).join(',')}`)
-        .then(result => {
-          this.set("featuredUsers", result.users.map(user => {
-            return {
-              user,
-              label: featuredUsers[user.id]
-            }
-          }));
-        });
-    }
-  },
 
   didInsertElement() {
     scheduleOnce('afterRender', () => {
@@ -48,19 +25,52 @@ export default Component.extend({
     });
   },
 
-  @discourseComputed
-  featuredLinks() {
+  @on('init')
+  @observes("category.slug")
+  setCategoryFeaturedUser() {
+    if (settings.featured_users) {
+      const featuredUsers = {};
+      const slug = this.category.slug;
+
+      settings.featured_users.split('|').map(u => {
+        let parts = u.split(SETTING_CONNECTOR);
+        if (parts[0] === slug) {
+          featuredUsers[parts[1]] = parts[2];
+        }
+      });
+
+      if (Object.keys(featuredUsers).length > 0) {
+        ajax(`/user-cards?user_ids=${Object.keys(featuredUsers).join(',')}`)
+          .then(result => {
+            this.set("featuredUsers", result.users.map(user => {
+              return {
+                user,
+                label: featuredUsers[user.id]
+              }
+            }));
+          });
+      }
+    }
+  },
+
+  @discourseComputed('category.slug')
+  featuredLinks(categorySlug) {
     const settingList = settings.featured_links.split("|");
     if (!settingList) return [];
 
-    return settingList.map(l => {
+    return settingList.reduce((result, l) => {
       let parts = l.split(SETTING_CONNECTOR);
-      return {
-        label: parts[0],
-        title: parts[0],
-        href: parts[1]
+
+      if (categorySlug === parts[0]) {
+        result.push({
+          label: parts[1],
+          title: parts[1],
+          href: parts[2]
+        })
       }
-    });
+
+      return result;
+    }, []);
   },
 
   @discourseComputed('category.description')

@@ -1,11 +1,19 @@
+show_header:
+  default: ""
+  type: list
+  description: |
+    Banner will only show for these categories. Format: slug:target.
+    *targets* all: category and its subcategories;
+              no_sub: Only this category;
+              only_sub: Only subcategories of this category;
 show_description: true
 featured_users:
   type: list
   default: ""
   description:
-    en: "List of users to feature in the category banner. Format: [user_id]~~[label (optional)]"
+    en: "List of users to feature in the category banner. Format: [slug]~~[user_id]~~[label (optional)]"
 featured_links:
   type: list
   default: ""
   description:
-    en: "List of links to feature in the category banner. Format: [label]~~[url]"
+    en: "List of links to feature in the category banner. Format: [slug]~~[label]~~[url]"
