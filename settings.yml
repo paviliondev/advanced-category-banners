@@ -1,0 +1,11 @@
+show_description: true
+featured_users:
+  type: list
+  default: ""
+  description:
+    en: "List of users to feature in the category banner. Format: [user_id]~~[label (optional)]"
+featured_links:
+  type: list
+  default: ""
+  description:
+    en: "List of links to feature in the category banner. Format: [label]~~[url]"

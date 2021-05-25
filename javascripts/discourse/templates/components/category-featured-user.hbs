@@ -1,0 +1,6 @@
+{{#if featuredUser.label}}
+  <label>{{featuredUser.label}}</label>
+{{/if}}
+<a href={{this.userPath}} data-user-card={{featuredUser.user.username}}>
+  {{avatar featuredUser.user imageSize="small"}}
+</a>

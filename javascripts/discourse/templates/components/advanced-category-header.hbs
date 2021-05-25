@@ -1,0 +1,18 @@
+<div class="category-name">{{category.name}}</div>
+{{#if showDescription}}
+  <div class="category-description">{{{dir-span category.description}}}</div>
+{{/if}}
+{{#if showFeaturedLinks}}
+  <ul class="category-featured-links">
+    {{#each featuredLinks as |link|}}
+      <li>{{category-featured-link link=link}}</li>
+    {{/each}}
+  </ul>
+{{/if}}
+{{#if showFeaturedUsers}}
+  <ul class="category-featured-users">
+    {{#each featuredUsers as |featuredUser|}}
+      <li>{{category-featured-user featuredUser=featuredUser}}</li>
+    {{/each}}
+  </ul>
+{{/if}}

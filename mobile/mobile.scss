@@ -1,6 +1,13 @@
-.category-heading .category-logo.aspect-image {
-  max-width: 50px;
-  padding-bottom: 50px;
-  margin: 5px 15px 5px 10px;
-  float: left;
+.category-heading {
+  .category-logo.aspect-image {
+    max-width: 50px;
+    padding-bottom: 50px;
+    margin: 5px 15px 5px 10px;
+    float: left;
+  }
+
+  ul.category-featured-users,
+  ul.category-featured-links {
+    grid-template-columns: repeat(auto-fit, 100%);
+  }
 }
