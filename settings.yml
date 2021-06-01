@@ -1,4 +1,4 @@
-show_header:
+show_category_banner:
   default: ""
   type: list
   description: |
@@ -6,7 +6,24 @@ show_header:
     *targets* all: category and its subcategories;
               no_sub: Only this category;
               only_sub: Only subcategories of this category;
-show_description: true
+show_category_description:
+  type: list
+  default: ""
+  description: |
+    Category description will show for these categories if banner is showing.
+    *format*  slug:target.
+    *targets* all: category and its subcategories;
+              no_sub: Only this category;
+              only_sub: Only subcategories of this category;
+show_category_logo:
+  type: list
+  default: ""
+  description: |
+    Category logo will show for these categories if banner is showing.
+    *format*  slug:target.
+    *targets* all: category and its subcategories;
+              no_sub: Only this category;
+              only_sub: Only subcategories of this category;
 featured_users:
   type: list
   default: ""

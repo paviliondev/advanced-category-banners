@@ -4,6 +4,7 @@ import discourseComputed, { observes, on } from "discourse-common/utils/decorato
 import { notEmpty } from "@ember/object/computed";
 import { ajax } from "discourse/lib/ajax";
 import { userPath } from "discourse/lib/url";
+import { categorySettingEnabled, categorySettingObj } from '../lib/category-settings';
 
 const SETTING_CONNECTOR = "~~";
 
@@ -11,19 +12,6 @@ export default Component.extend({
   classNames: 'advanced-category-header',
   showFeaturedUsers: notEmpty("featuredUsers"),
   showFeaturedLinks: notEmpty("featuredLinks"),
-
-  didInsertElement() {
-    scheduleOnce('afterRender', () => {
-      let $el = $(this.element);
-      $el.appendTo('section.category-heading');
-
-      if (this.category.uploaded_logo) {
-        $('section.category-heading').addClass('has-logo');  
-      }
-
-      $('section.category-heading .advanced-category-header, section.category-heading p').wrapAll('<div class="category-heading-details"></div>');
-    });
-  },
 
   @on('init')
   @observes("category.slug")
@@ -73,8 +61,13 @@ export default Component.extend({
     }, []);
   },
 
-  @discourseComputed('category.description')
-  showDescription(description) {
-    return description && settings.show_description;
+  @discourseComputed('category')
+  showDescription(category) {
+    return categorySettingEnabled(category, categorySettingObj(settings.show_category_description));
+  },
+
+  @discourseComputed('category')
+  showLogo(category) {
+    return categorySettingEnabled(category, categorySettingObj(settings.show_category_logo));
   }
 })
