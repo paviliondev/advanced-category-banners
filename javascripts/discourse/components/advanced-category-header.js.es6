@@ -1,7 +1,7 @@
 import Component from '@ember/component';
 import { scheduleOnce } from "@ember/runloop";
 import discourseComputed, { observes, on } from "discourse-common/utils/decorators";
-import { notEmpty } from "@ember/object/computed";
+import { notEmpty, or } from "@ember/object/computed";
 import { ajax } from "discourse/lib/ajax";
 import { userPath } from "discourse/lib/url";
 import { categorySettingEnabled, categorySettingObj } from '../lib/category-settings';
@@ -12,6 +12,7 @@ export default Component.extend({
   classNames: 'advanced-category-header',
   showFeaturedUsers: notEmpty("featuredUsers"),
   showFeaturedLinks: notEmpty("featuredLinks"),
+  showMeta: or("showLogo", "showFeaturedLinks", "showFeaturedUsers"),
 
   @on('init')
   @observes("category.slug")
