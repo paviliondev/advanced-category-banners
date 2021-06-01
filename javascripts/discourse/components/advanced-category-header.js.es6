@@ -64,11 +64,13 @@ export default Component.extend({
 
   @discourseComputed('category')
   showDescription(category) {
-    return categorySettingEnabled(category, categorySettingObj(settings.show_category_description));
+    return category.description &&
+      categorySettingEnabled(category, categorySettingObj(settings.show_category_description));
   },
 
   @discourseComputed('category')
   showLogo(category) {
-    return categorySettingEnabled(category, categorySettingObj(settings.show_category_logo));
+    return category.uploaded_logo && 
+      categorySettingEnabled(category, categorySettingObj(settings.show_category_logo));
   }
 })
