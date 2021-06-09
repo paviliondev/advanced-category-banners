@@ -12,7 +12,7 @@ export default Component.extend({
   classNames: 'advanced-category-header',
   showFeaturedUsers: notEmpty("featuredUsers"),
   showFeaturedLinks: notEmpty("featuredLinks"),
-  showMeta: or("showLogo", "showFeaturedLinks", "showFeaturedUsers"),
+  showMeta: or("showLogo", "showFeaturedUsers"),
 
   @on('init')
   @observes("category.slug")

@@ -3,6 +3,13 @@
   {{#if showDescription}}
     <div class="category-description">{{{dir-span category.description}}}</div>
   {{/if}}
+  {{#if showFeaturedLinks}}
+    <ul class="category-featured-links">
+      {{#each featuredLinks as |link|}}
+        <li>{{category-featured-link link=link}}</li>
+      {{/each}}
+    </ul>
+  {{/if}}
 </div>
 
 {{#if showMeta}}
@@ -15,14 +22,6 @@
         height=category.uploaded_logo.height
         alt=""
       }}
-    {{/if}}
-
-    {{#if showFeaturedLinks}}
-      <ul class="category-featured-links">
-        {{#each featuredLinks as |link|}}
-          <li>{{category-featured-link link=link}}</li>
-        {{/each}}
-      </ul>
     {{/if}}
 
     {{#if showFeaturedUsers}}
