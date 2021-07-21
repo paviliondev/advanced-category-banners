@@ -33,9 +33,13 @@
     }
 
     .category-name {
-      @include underline;
       font-size: 1.5em;
       margin-bottom: .5em;
+
+      span {
+        @include underline;
+        display: inline-block;
+      }
     }
 
     .category-logo {
