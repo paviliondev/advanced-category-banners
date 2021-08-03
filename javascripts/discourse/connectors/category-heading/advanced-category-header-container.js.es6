@@ -11,7 +11,7 @@ export default {
     component.set('showHeader', categorySettingEnabled(category, showHeaderFor));
 
     controller.addObserver("category", function () {
-      if (this._state === 'destroying') return;
+      if (component._state === 'destroying') return;
       component.set('showHeader', categorySettingEnabled(controller.get("category"), showHeaderFor));
     });
   }

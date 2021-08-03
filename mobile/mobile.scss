@@ -11,3 +11,16 @@
     grid-template-columns: repeat(auto-fit, 100%);
   }
 }
+
+.site-ctas {
+  grid-template-columns: repeat(3, 1fr);
+
+  .site-cta {
+    padding: 1em;
+
+    img {
+      max-width: 25px;
+      margin-bottom: 0;
+    }
+  }
+}

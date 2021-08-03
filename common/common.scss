@@ -1,5 +1,5 @@
 @mixin underline {
-  background-image: linear-gradient(180deg, transparent 95%, $tertiary 0);
+  background-image: linear-gradient(180deg, transparent 97%, $tertiary 0);
   background-repeat: no-repeat;
   background-color: initial;
   padding: 0px;
@@ -23,7 +23,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    border: 2px solid $tertiary;
+    border: 1px solid $tertiary;
     padding: 1em;
     box-sizing: border-box;
     margin: 0;
@@ -85,6 +85,37 @@
 
     label {
       justify-content: center;
+    }
+  }
+}
+
+.site-ctas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-gap: 1.5em;
+
+  .site-cta {
+    text-align: center;
+    padding: 2em;
+    margin: 1.5em 0;
+    border: 1px solid $primary;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &:hover {
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+      background-color: $primary;
+      color: $secondary;
+    }
+    
+    &.minimized {
+      padding: 1em;
+    }
+
+    img {
+      max-width: 35px;
+      margin-bottom: .5em;
     }
   }
 }

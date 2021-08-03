@@ -34,3 +34,20 @@ featured_links:
   default: ""
   description:
     en: "List of links to feature in the category banner. Format: [slug]~~[label]~~[url]"
+site_cta_links:
+  type: list
+  default: ""
+  description: |
+    Site-wide call to action links shown above navigation and category banners.
+    *format* label~~url~~image_src(optional)
+site_cta_links_display:
+  type: enum
+  default: "home"
+  choices:
+    - home
+    - minimized
+    - full
+  description: |
+    home: show only on homepage
+    minimized: show minimized outside homepage
+    full: show outside homepage
