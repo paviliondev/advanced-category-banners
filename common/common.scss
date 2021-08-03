@@ -107,9 +107,13 @@
       background-color: $primary;
       color: $secondary;
     }
-    
+
     &.minimized {
       padding: 1em;
+
+      span {
+        font-weight: 400;
+      }
     }
 
     img {
