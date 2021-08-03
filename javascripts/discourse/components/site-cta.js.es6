@@ -1,5 +1,5 @@
 import Component from "@ember/component";
-import { not, and, equal, or } from "@ember/object/computed";
+import { not, equal, or } from "@ember/object/computed";
 import DiscourseURL from "discourse/lib/url";
 
 export default Component.extend({
@@ -7,9 +7,7 @@ export default Component.extend({
   classNameBindings: [':site-cta', 'display'],
   tagName: 'a',
   notMinimized: not('minimized'),
-  showImageDesktop: and('cta.image_src', 'full'),
-  showImageMobile: and('cta.image_src', 'site.mobileView'),
-  showImage: or('showImageDesktop', 'showImageMobile'),
+  showImage: or('cta.image_src'),
   showLabel: not('site.mobileView'),
   minimized: equal('display', 'minimized'),
   full: equal('display', 'full'),
