@@ -24,7 +24,6 @@ export default Component.extend({
 
   @discourseComputed('home', 'siteCtas', 'isDiscovery')
   showCtas(home, siteCtas, isDiscovery) {
-    console.log(home, isDiscovery)
     return siteCtas.length && isDiscovery && (
       home || settings.site_cta_links_display !== 'home'
     );
