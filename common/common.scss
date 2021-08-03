@@ -74,8 +74,8 @@
     text-align: center;
 
     &:hover {
-      box-shadow: 0 6px 8px 4px var(--primary-low);
-      transform: translateY(-3px);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+      background-color: var(--primary-low);
     }
   }
 
@@ -97,15 +97,14 @@
     text-align: center;
     padding: 2em;
     margin: 1.5em 0;
-    border: 1px solid $primary;
+    border: 1px solid var(--primary);;
     display: flex;
     flex-direction: column;
     align-items: center;
 
     &:hover {
       box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
-      background-color: $primary;
-      color: $secondary;
+      background-color: var(--primary-low);
     }
 
     &.minimized {
