@@ -8,11 +8,11 @@ export default {
     const showHeaderFor = categorySettingObj(settings.show_category_banner)
 
     let category = attrs.category;
-    component.set('showHeader', categorySettingEnabled(category, showHeaderFor));
+    component.set('showHeader', categorySettingEnabled(category, showHeaderFor, true));
 
     controller.addObserver("category", function () {
       if (component._state === 'destroying') return;
-      component.set('showHeader', categorySettingEnabled(controller.get("category"), showHeaderFor));
+      component.set('showHeader', categorySettingEnabled(controller.get("category"), showHeaderFor, true));
     });
   }
 }
