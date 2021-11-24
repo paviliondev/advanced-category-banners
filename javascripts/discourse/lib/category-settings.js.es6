@@ -1,9 +1,7 @@
 function categorySettingEnabled(category, settingObj) {
   return category && (
-    Object.keys(settingObj).length === 0 || (
-      (settingObj[category.slug] || '').match(/all|no_sub/) ||
-      (category.parentCategory && (settingObj[category.parentCategory.slug] || '').match(/all|only_sub/))
-    )
+    (settingObj[category.slug] || '').match(/all|no_sub/) ||
+    (category.parentCategory && (settingObj[category.parentCategory.slug] || '').match(/all|only_sub/))
   );
 }
 
