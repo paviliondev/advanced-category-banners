@@ -65,7 +65,7 @@ export default Component.extend({
   @discourseComputed('category')
   showDescription(category) {
     return category.description &&
-      categorySettingEnabled(category, categorySettingObj(settings.show_category_description));
+      categorySettingEnabled(category, categorySettingObj(settings.show_category_description), true);
   },
 
   @discourseComputed('category')
